@@ -2,15 +2,28 @@
     "name": "dynamic_server",
     "description": "Dynamic Server",
     "version": "1.0.0",
-    "author": {
-        "name": "",
-        "email": ""
-    },
-    "contributors": [
-    ],
-    "repository": {},
     "dependencies": {
+        "ejs": "^3.1.10",
         "express": "^5.1.0",
-        "sqlite3": "^5.1.7"
+    "sqlite3": "^5.1.7",
+    "csv-parser": "^3.0.0"
+    },
+    "main": "index.js",
+    "scripts": {
+  "start": "node server.js",
+  "dev": "nodemon server.js"
+},
+"author": "Your Name",
+"contributors": ["Group Member 1", "Group Member 2"],
+"repository": {
+  "type": "git",
+  "url": "https://github.com/<your-username>/CISC375-Project-2.git"
+}
+,
+    "keywords": [],
+    "license": "ISC",
+    "type": "commonjs",
+    "devDependencies": {
+        "nodemon": "^3.1.10"
     }
 }

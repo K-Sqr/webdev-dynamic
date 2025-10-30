@@ -1,0 +1,52 @@
+/* Dark theme with better contrast */
+:root {
+  --bg-dark: #1a1a1a;
+  --card-dark: #242424;
+  --text-light: #f0f0f0;
+  --nav-bg: #2c5282;
+  --accent: #4299e1;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 1rem;
+  background: var(--bg-dark);
+  color: var(--text-light);
+}
+
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  background: var(--card-dark);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+nav {
+  margin-bottom: 1.5rem;
+  background: var(--nav-bg);
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+nav a {
+  color: var(--text-light);
+  margin-right: 1rem;
+  text-decoration: none;
+  font-weight: 500;
+  opacity: 1;
+}
+
+nav a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* Dark theme chart overrides */
+canvas {
+  background: var(--card-dark);
+  border-radius: 4px;
+  padding: 1rem;
+}

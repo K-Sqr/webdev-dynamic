@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <%- include('partials/head', { title: 'Frequency — Drug Use' }) %>
+  </head>
+  <body>
+  <%- include('partials/nav') %>
+    <main style="padding:1rem;">
+      <h1>Drug frequency by age</h1>
+      <form method="get" action="/frequency">
+        <label for="drug">Choose drug:</label>
+        <select id="drug" name="drug">
+          <% drugs.forEach(function(d){ %>
+            <option value="<%= d %>" <%= d === drug ? 'selected' : '' %>><%= d %></option>
+          <% }); %>
+        </select>
+        <button type="submit">Show</button>
+      </form>
+
+      <canvas id="freqChart" width="800" height="300"></canvas>
+      <script>
+        const labels = <%- labelsJson %>;
+        const data = <%- dataJson %>;
+        const ctx = document.getElementById('freqChart').getContext('2d');
+        new Chart(ctx, {
+          type: 'bar',
+          data: { labels, datasets: [{ label: '<%= drug %> frequency', data, backgroundColor: 'rgba(153,102,255,0.5)' }] }
+        });
+      </script>
+    </main>
+    <%- include('partials/footer-scripts') %>
+  </body>
+  </html>

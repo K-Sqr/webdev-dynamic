@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <%- include('partials/head', { title: 'Drug ' + drug + ' — Usage by age' }) %>
+  </head>
+  <body>
+  <%- include('partials/nav') %>
+    <main style="padding:1rem;">
+      <h1>Drug: <%= drug %></h1>
+      <p>
+        <a href="/drug/<%= prevDrug %>">Previous</a> |
+        <a href="/drugs">All drugs</a> |
+        <a href="/drug/<%= nextDrug %>">Next</a>
+      </p>
+
+      <section>
+        <h2>Usage by age group</h2>
+        <canvas id="drugChart" width="800" height="300"></canvas>
+        <script>
+          const labels = <%- labelsJson %>;
+          const data = <%- dataJson %>;
+
+          const ctx = document.getElementById('drugChart').getContext('2d');
+          new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: labels,
+              datasets: [{
+                label: '<%= drug %> use (%)',
+                data: data,
+                borderColor: 'rgba(75,192,192,1)',
+                tension: 0.2
+              }]
+            }
+          });
+        </script>
+      </section>
+    </main>
+    <%- include('partials/footer-scripts') %>
+  </body>
+  </html>

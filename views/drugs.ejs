@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+  <head>
+    <%- include('partials/head', { title: 'Drugs — Drug Use' }) %>
+  </head>
+  <body>
+  <%- include('partials/nav') %>
+    <main style="padding:1rem;">
+      <h1>Drugs</h1>
+      <p>Click a drug to view usage across age groups.</p>
+      <ul>
+        <% drugs.forEach(function(d){ %>
+          <li><a href="/drug/<%= d %>"><%= d %></a></li>
+        <% }); %>
+      </ul>
+    </main>
+    <%- include('partials/footer-scripts') %>
+  </body>
+  </html>

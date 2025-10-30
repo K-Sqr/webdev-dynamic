@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <%- include('partials/head', { title: 'Age ' + row.age + ' — Drug Use' }) %>
+  </head>
+  <body>
+  <%- include('partials/nav') %>
+    <main style="padding:1rem;">
+      <h1>Age group: <%= row.age %></h1>
+      <p>
+        <a href="/age/<%= prevAge %>">Previous</a> |
+        <a href="/ages">All ages</a> |
+        <a href="/age/<%= nextAge %>">Next</a>
+      </p>
+
+      <section>
+        <h2>Drug use (%)</h2>
+        <ul>
+          <% drugs.forEach(function(d){ %>
+            <li><strong><%= d.key %></strong>: <%= d.value %></li>
+          <% }); %>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Chart</h2>
+        <canvas id="ageChart" width="600" height="300"></canvas>
+        <script>
+          const chartData = {
+            labels: <%- labelsJson %>,
+            datasets: [{
+              label: 'Use %',
+              data: <%- dataJson %>,
+              backgroundColor: 'rgba(54,162,235,0.5)'
+            }]
+          };
+          const ctx = document.getElementById('ageChart').getContext('2d');
+          new Chart(ctx, { type: 'bar', data: chartData });
+        </script>
+      </section>
+    </main>
+    <%- include('partials/footer-scripts') %>
+  </body>
+  </html>

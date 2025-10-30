@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+  <head>
+    <%- include('partials/head', { title: 'Ages — Drug Use' }) %>
+  </head>
+  <body>
+  <%- include('partials/nav') %>
+    <main style="padding:1rem;">
+      <h1>Drug use by age groups</h1>
+      <p>Click an age group to view detailed usage percentages.</p>
+      <ul>
+        <% ages.forEach(function(a){ %>
+          <li><a href="/age/<%= a.age %>"><%= a.age %></a></li>
+        <% }); %>
+      </ul>
+    </main>
+    <%- include('partials/footer-scripts') %>
+  </body>
+  </html>
